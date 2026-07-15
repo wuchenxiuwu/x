@@ -14,7 +14,6 @@
         android:allowBackup="true"
         android:label="ProTerm"
         android:supportsRtl="true"
-        android:extractNativeLibs="true"
         android:theme="@style/Theme.ProTerm"
         tools:targetApi="31">
 

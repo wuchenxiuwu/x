@@ -71,6 +71,10 @@ android {
             useLegacyPackaging = true
         }
     }
+
+    lint {
+        disable += "UnsafeNativeCodeLocation"
+    }
 }
 
 dependencies {

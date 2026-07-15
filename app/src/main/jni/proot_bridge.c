@@ -119,16 +119,20 @@ Java_com_proterm_app_proot_ProotBridge_startProot(
 
     /*
      * exec 错误管道：子进程 execl 失败时把 errno 写回父进程。
-     * 写端设 O_CLOEXEC——execl 成功时随新进程映像自动关闭，父进程 read 读到 EOF，
+     * 写端设 FD_CLOEXEC——execl 成功时随新进程映像自动关闭，父进程 read 读到 EOF，
      * 据此区分“正常启动”与“exec 失败”，杜绝返回一个挂着却已死的 master fd。
+     *
+     * 注意：Android API 24 (minSdk) 没有 pipe2，用 pipe + fcntl 替代。
      */
     int err_pipe[2];
-    if (pipe2(err_pipe, O_CLOEXEC) < 0) {
-        LOGE("pipe2 failed: %s", strerror(errno));
+    if (pipe(err_pipe) < 0) {
+        LOGE("pipe failed: %s", strerror(errno));
         close(master);
         close(slave);
         goto cleanup_fail;
     }
+    fcntl(err_pipe[0], F_SETFD, FD_CLOEXEC);
+    fcntl(err_pipe[1], F_SETFD, FD_CLOEXEC);
 
     pid_t pid = fork();
     if (pid < 0) {
