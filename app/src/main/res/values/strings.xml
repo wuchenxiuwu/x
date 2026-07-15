@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProTerm</string>
+
+    <!-- 容器管理页 -->
+    <string name="container_title">容器管理</string>
+    <string name="container_subtitle">管理你的 Linux 容器环境</string>
+    <string name="container_status_running">运行中</string>
+    <string name="container_status_stopped">已停止</string>
+    <string name="container_status_creating">创建中</string>
+    <string name="btn_start">开启容器</string>
+    <string name="btn_stop">关闭容器</string>
+    <string name="btn_open_terminal">打开终端</string>
+    <string name="btn_create_container">新建容器</string>
+    <string name="label_container_name">容器名称</string>
+    <string name="label_container_image">镜像</string>
+    <string name="label_container_shell">默认 Shell</string>
+    <string name="default_container_name">Alpine Linux</string>
+    <string name="default_container_image">alpine-minirootfs</string>
+    <string name="default_container_shell">/bin/sh</string>
+    <string name="empty_state_title">暂无容器</string>
+    <string name="empty_state_desc">点击下方按钮创建你的第一个 Linux 容器</string>
+    <string name="confirm_stop_title">关闭容器</string>
+    <string name="confirm_stop_message">确定要关闭当前容器吗？未保存的数据将丢失。</string>
+    <string name="dialog_yes">确定</string>
+    <string name="dialog_cancel">取消</string>
+</resources>

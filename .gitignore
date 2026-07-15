@@ -1,0 +1,17 @@
+# 忽略 Gradle / IDE 产物
+.gradle/
+local.properties
+*.iml
+.idea/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# proot 官方源码以 submodule 形式引入，不提交其源码副本
+external/proot/
+!external/proot/.gitkeep
+
+# 不提交大体积资源（proot 二进制 / rootfs 镜像由构建脚本拉取）
+app/src/main/assets/proot
+app/src/main/assets/rootfs.tar.gz

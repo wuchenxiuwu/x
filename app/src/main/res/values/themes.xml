@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        Material 3 Expressive 主题
+        - 更大圆角（卡片 28dp，按钮 48dp 全圆角，FAB 圆形）
+        - 丰富颜色层次
+        - 表面容器层级分明
+    -->
+    <style name="Theme.ProTerm" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary -->
+        <item name="colorPrimary">@color/md_primary</item>
+        <item name="colorOnPrimary">@color/md_on_primary</item>
+        <item name="colorPrimaryContainer">@color/md_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/md_on_primary_container</item>
+
+        <!-- Secondary -->
+        <item name="colorSecondary">@color/md_secondary</item>
+        <item name="colorOnSecondary">@color/md_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/md_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/md_on_secondary_container</item>
+
+        <!-- Tertiary -->
+        <item name="colorTertiary">@color/md_tertiary</item>
+        <item name="colorOnTertiary">@color/md_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/md_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/md_on_tertiary_container</item>
+
+        <!-- Surface -->
+        <item name="colorSurface">@color/md_surface</item>
+        <item name="colorOnSurface">@color/md_on_surface</item>
+        <item name="colorSurfaceVariant">@color/md_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/md_on_surface_variant</item>
+        <item name="colorSurfaceContainerLowest">@color/md_surface_container_lowest</item>
+        <item name="colorSurfaceContainerLow">@color/md_surface_container_low</item>
+        <item name="colorSurfaceContainer">@color/md_surface_container</item>
+        <item name="colorSurfaceContainerHigh">@color/md_surface_container_high</item>
+        <item name="colorSurfaceContainerHighest">@color/md_surface_container_highest</item>
+
+        <!-- Outline -->
+        <item name="colorOutline">@color/md_outline</item>
+        <item name="colorOutlineVariant">@color/md_outline_variant</item>
+
+        <!-- Error -->
+        <item name="colorError">@color/md_error</item>
+        <item name="colorOnError">@color/md_on_error</item>
+        <item name="colorErrorContainer">@color/md_error_container</item>
+        <item name="colorOnErrorContainer">@color/md_on_error_container</item>
+
+        <!-- Inverse -->
+        <item name="colorSurfaceInverse">@color/md_inverse_surface</item>
+        <item name="colorOnSurfaceInverse">@color/md_inverse_on_surface</item>
+        <item name="colorPrimaryInverse">@color/md_inverse_primary</item>
+
+        <!-- 系统栏 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- 组件圆角覆盖（Material 3 Expressive） -->
+        <item name="materialCardViewStyle">@style/Widget.ProTerm.Card</item>
+        <item name="materialButtonStyle">@style/Widget.ProTerm.Button</item>
+        <item name="floatingActionButtonStyle">@style/Widget.ProTerm.FAB</item>
+    </style>
+
+    <!-- MaterialCardView 大圆角 -->
+    <style name="Widget.ProTerm.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">28dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- MaterialCardView 外框变体（用于强调卡片） -->
+    <style name="Widget.ProTerm.Card.Outlined" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardCornerRadius">28dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/md_outline</item>
+    </style>
+
+    <!-- 按钮：全圆角胶囊形 -->
+    <style name="Widget.ProTerm.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">48dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:paddingStart">28dp</item>
+        <item name="android:paddingEnd">28dp</item>
+    </style>
+
+    <!-- 描边按钮 -->
+    <style name="Widget.ProTerm.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">48dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:paddingStart">28dp</item>
+        <item name="android:paddingEnd">28dp</item>
+    </style>
+
+    <!-- 文字按钮 -->
+    <style name="Widget.ProTerm.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="cornerRadius">48dp</item>
+    </style>
+
+    <!-- FAB 圆形 -->
+    <style name="Widget.ProTerm.FAB" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Chip 样式 -->
+    <style name="Widget.ProTerm.Chip" parent="Widget.Material3.Chip.Assist">
+        <item name="chipCornerRadius">16dp</item>
+        <item name="chipMinHeight">36dp</item>
+    </style>
+
+    <!-- 容器管理页专用主题（深色渐变背景） -->
+    <style name="Theme.ProTerm.Container" parent="Theme.ProTerm">
+        <item name="android:windowBackground">@drawable/bg_container</item>
+    </style>
+
+    <!-- 终端页专用主题 -->
+    <style name="Theme.ProTerm.Terminal" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:statusBarColor">@color/term_bg</item>
+        <item name="android:navigationBarColor">@color/term_bg</item>
+        <item name="android:windowBackground">@color/term_bg</item>
+    </style>
+</resources>

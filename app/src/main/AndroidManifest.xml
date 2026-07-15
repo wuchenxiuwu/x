@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 容器内 apt/网络访问需要 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 旧版本导出 rootfs 到 sdcard 用，Android 10+ 已不需要 -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <application
+        android:allowBackup="true"
+        android:label="ProTerm"
+        android:supportsRtl="true"
+        android:extractNativeLibs="true"
+        android:theme="@style/Theme.ProTerm"
+        tools:targetApi="31">
+
+        <!-- 容器管理首页（Launcher） -->
+        <activity
+            android:name=".ContainerActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ProTerm.Container">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 终端页面 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ProTerm.Terminal"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+</manifest>

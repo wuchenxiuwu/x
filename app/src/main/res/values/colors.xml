@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Expressive 核心调色板 -->
+    <!-- 使用 Material 3 动态颜色理念，但以静态色值提供稳定主题 -->
+
+    <!-- Primary 品牌色 -->
+    <color name="md_primary">#FF1A6C31</color>
+    <color name="md_on_primary">#FFFFFFFF</color>
+    <color name="md_primary_container">#FFA2F5AE</color>
+    <color name="md_on_primary_container">#FF002109</color>
+
+    <!-- Secondary 辅助色 -->
+    <color name="md_secondary">#FF526351</color>
+    <color name="md_on_secondary">#FFFFFFFF</color>
+    <color name="md_secondary_container">#FFD5E8D0</color>
+    <color name="md_on_secondary_container">#FF101F11</color>
+
+    <!-- Tertiary 第三色 -->
+    <color name="md_tertiary">#FF38656A</color>
+    <color name="md_on_tertiary">#FFFFFFFF</color>
+    <color name="md_tertiary_container">#FFBCEBF0</color>
+    <color name="md_on_tertiary_container">#FF002023</color>
+
+    <!-- Surface 表面色 -->
+    <color name="md_surface">#FFF7FBF2</color>
+    <color name="md_on_surface">#FF181D18</color>
+    <color name="md_surface_variant">#FFDDE5D9</color>
+    <color name="md_on_surface_variant">#FF414941</color>
+    <color name="md_surface_container_lowest">#FFFFFFFF</color>
+    <color name="md_surface_container_low">#FFF1F5EC</color>
+    <color name="md_surface_container">#FFEBF0E6</color>
+    <color name="md_surface_container_high">#FFE5EAE1</color>
+    <color name="md_surface_container_highest">#FFE0E5DB</color>
+
+    <!-- Outline 轮廓色 -->
+    <color name="md_outline">#FF717971</color>
+    <color name="md_outline_variant">#FFC1C9BF</color>
+
+    <!-- Error 错误色 -->
+    <color name="md_error">#FFBA1A1A</color>
+    <color name="md_on_error">#FFFFFFFF</color>
+    <color name="md_error_container">#FFFFDAD6</color>
+    <color name="md_on_error_container">#FF410002</color>
+
+    <!-- Inverse 反色 -->
+    <color name="md_inverse_surface">#FF2D322C</color>
+    <color name="md_inverse_on_surface">#FFEEF2E9</color>
+    <color name="md_inverse_primary">#FF87D892</color>
+
+    <!-- Terminal 专用色 -->
+    <color name="term_bg">#FF0B0B0B</color>
+    <color name="term_green">#FF4ADE80</color>
+    <color name="term_accent">#FF22C55E</color>
+    <color name="term_text">#FFE5E5E5</color>
+
+    <!-- 状态色 -->
+    <color name="status_running">#FF22C55E</color>
+    <color name="status_stopped">#FFEF4444</color>
+    <color name="status_unknown">#FF9CA3AF</color>
+</resources>
