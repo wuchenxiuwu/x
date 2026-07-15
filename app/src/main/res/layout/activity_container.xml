@@ -100,49 +100,6 @@
                     android:textColor="@color/md_outline"
                     android:layout_marginTop="8dp"
                     android:gravity="center" />
-
-                <!-- 导入按钮区域（默认隐藏，由代码控制） -->
-                <LinearLayout
-                    android:id="@+id/importSection"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginTop="32dp"
-                    android:visibility="gone">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnImportProot"
-                        style="@style/Widget.Material3.Button.OutlinedButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:layout_marginBottom="12dp"
-                        android:text="@string/import_proot"
-                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                        app:icon="@drawable/ic_file"
-                        app:iconGravity="textStart"
-                        app:strokeWidth="2dp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnImportRootfs"
-                        style="@style/Widget.Material3.Button.OutlinedButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:layout_marginBottom="16dp"
-                        android:text="@string/import_rootfs"
-                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                        app:icon="@drawable/ic_archive"
-                        app:iconGravity="textStart"
-                        app:strokeWidth="2dp" />
-
-                    <TextView
-                        android:id="@+id/tvImportStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                        android:textColor="@color/md_outline"
-                        android:gravity="center" />
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
