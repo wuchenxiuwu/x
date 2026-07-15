@@ -95,7 +95,7 @@ class Vt100Parser(private val em: TerminalEmulator) {
         } else if (b in 0x20..0x7E) {
             feedChar(em.mapByte(b))
         } else {
-            em.putChar(b.toChar())
+            em.putChar(b)
         }
     }
 

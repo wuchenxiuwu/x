@@ -5,10 +5,24 @@
     <!-- 容器内 apt/网络访问需要 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- 旧版本导出 rootfs 到 sdcard 用，Android 10+ 已不需要 -->
+    <!-- 文件选择器不需要此权限，但保留以备后续导出功能 -->
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
+
+    <!-- Android 13+ 存储权限粒度拆分 -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        android:minSdkVersion="33" />
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_VIDEO"
+        android:minSdkVersion="33" />
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_AUDIO"
+        android:minSdkVersion="33" />
 
     <application
         android:allowBackup="true"

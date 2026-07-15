@@ -66,9 +66,8 @@ android {
         viewBinding = true
     }
     packaging {
-        // proot 二进制与 rootfs 由 assets 提供，避免被压缩破坏可执行位
-        jniLibs {
-            useLegacyPackaging = true
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 

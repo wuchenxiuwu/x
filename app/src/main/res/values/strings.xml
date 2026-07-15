@@ -24,4 +24,20 @@
     <string name="confirm_stop_message">确定要关闭当前容器吗？未保存的数据将丢失。</string>
     <string name="dialog_yes">确定</string>
     <string name="dialog_cancel">取消</string>
+
+    <!-- 创建容器弹窗 -->
+    <string name="dialog_create_title">新建容器</string>
+    <string name="hint_container_name">容器名称（如 Alpine）</string>
+    <string name="btn_select_proot">选择 proot 二进制</string>
+    <string name="btn_select_proot_exist">✓ proot 已就绪</string>
+    <string name="btn_select_rootfs">选择 rootfs.tar.gz</string>
+    <string name="btn_select_rootfs_done">✓ rootfs 已选择</string>
+    <string name="btn_create_done">完成</string>
+    <string name="create_error_proot">请先选择 proot 可执行文件</string>
+    <string name="create_error_rootfs">请先选择 rootfs.tar.gz</string>
+    <string name="create_error_name">请输入容器名称</string>
+    <string name="create_success">容器创建成功</string>
+    <string name="permission_title">需要存储权限</string>
+    <string name="permission_message">允许访问存储空间，以便导入容器文件</string>
+    <string name="permission_denied">存储权限被拒绝，部分功能可能无法使用</string>
 </resources>

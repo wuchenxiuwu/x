@@ -3,10 +3,8 @@ package com.proterm.app
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.proterm.app.databinding.ActivityMainBinding
-import com.proterm.app.proot.ProotBridge
 import com.proterm.app.terminal.TerminalEmulator
 import com.proterm.app.terminal.TerminalSession
-import com.proterm.app.terminal.gl.GLTerminalView
 
 /**
  * 终端页面：接收 ContainerActivity 传来的 PTY master fd，
@@ -24,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val terminalView = binding.terminal as GLTerminalView
+        val terminalView = binding.terminal
 
         // 从 intent 获取 fd（由 ContainerActivity 启动时传入）
         val fd = intent.getIntExtra("fd", -1)
@@ -36,11 +34,8 @@ class MainActivity : AppCompatActivity() {
                 "错误：未收到有效的 PTY fd\n请从容器管理页启动容器后再进入终端\n"
                     .toByteArray()
             )
-            val dummy = object : TerminalSession(0, emulator, {}) {
-                override fun write(text: String) {}
-                override fun writeByte(b: Int) {}
-                override fun resize(cols: Int, rows: Int) {}
-            }
+            // 创建一个不读不写不 resize 的空 session
+            val dummy = TerminalSession(0, emulator) {}
             terminalView.setup(emulator, dummy)
             return
         }

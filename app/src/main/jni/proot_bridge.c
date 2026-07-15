@@ -161,14 +161,17 @@ Java_com_proterm_app_proot_ProotBridge_startProot(
         setenv("TERM", "xterm-256color", 1);
         setenv("HOME", "/root", 1);
         setenv("PATH", "/usr/local/bin:/usr/bin:/bin", 1);
+        /* Android seccomp 过滤会拦截 ptrace 相关系统调用，必须关闭 */
+        setenv("PROOT_NO_SECCOMP", "1", 1);
 
         /*
          * 以 rootfs 作为 / 启动目标命令。
+         * -0 伪装成 root（解决 Android 上部分权限/SELinux 问题）
          * -b 绑定宿主机 /dev /proc /sys，使容器内设备与伪文件系统可用。
          * -w 设定初始工作目录。
-         * 如需伪装 root（某些内核裁剪 seccomp 的机型）可追加 "-0"。
          */
         execl(proot_path, "proot",
+              "-0",
               "-r", rootfs,
               "-b", "/dev",
               "-b", "/proc",

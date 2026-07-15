@@ -1,6 +1,6 @@
 package com.proterm.app.terminal
 
-import java.util.ArrayDeque
+import java.util.ArrayList
 
 /**
  * 终端屏幕模型：维护 `rows x cols` 的单元格网格、光标、滚动区域、SGR 状态、
@@ -50,7 +50,7 @@ class TerminalEmulator(
     private var gl = 0 // 当前 GL 使用的槽（0=G0, 1=G1）
 
     // scrollback
-    private val history = ArrayDeque<Array<Cell>>()
+    private val history = ArrayList<Array<Cell>>()
     private val HISTORY_MAX = 5000
 
     private data class SavedCursor(
@@ -214,8 +214,8 @@ class TerminalEmulator(
         val nn = n.coerceAtLeast(1)
         for (i in 0 until nn) {
             if (scrollTop == 0) {
-                history.addLast(copyLine(grid[0]))
-                while (history.size > HISTORY_MAX) history.removeFirst()
+                history.add(copyLine(grid[0]))
+                while (history.size > HISTORY_MAX) history.removeAt(0)
             }
             System.arraycopy(grid, scrollTop + 1, grid, scrollTop, scrollBottom - scrollTop)
             grid[scrollBottom] = Array(cols) { Cell() }

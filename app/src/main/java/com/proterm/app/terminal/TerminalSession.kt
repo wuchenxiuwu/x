@@ -18,18 +18,19 @@ class TerminalSession(
     private val emulator: TerminalEmulator,
     private val onExit: (Int) -> Unit
 ) {
-    private val pfd = ParcelFileDescriptor.fromFd(masterFd)
-    private val fd = pfd.fileDescriptor
-    private val input = FileInputStream(fd)
-    private val output = FileOutputStream(fd)
+    private val masterFdVal = masterFd
+    private val pfd = if (masterFd > 0) ParcelFileDescriptor.fromFd(masterFd) else null
+    private val input = if (pfd != null) FileInputStream(pfd.fileDescriptor) else null
+    private val output = if (pfd != null) FileOutputStream(pfd.fileDescriptor) else null
 
     private val reader = Thread({ readLoop() }, "proterm-reader").apply { if (masterFd > 0) start() }
 
     private fun readLoop() {
         val buf = ByteArray(8192)
+        val inp = input ?: return
         try {
             var n: Int
-            while (input.read(buf).also { n = it } > 0) {
+            while (inp.read(buf).also { n = it } > 0) {
                 emulator.append(buf, 0, n)
             }
         } catch (_: Exception) {
@@ -41,25 +42,27 @@ class TerminalSession(
 
     /** 发送一段文本（UTF-8） */
     fun write(text: String) {
-        output.write(text.toByteArray(StandardCharsets.UTF_8))
-        output.flush()
+        output?.write(text.toByteArray(StandardCharsets.UTF_8))
+        output?.flush()
     }
 
     /** 发送单个字节（如 0x03 = Ctrl-C，0x1a = Ctrl-Z，0x7f = DEL） */
     fun writeByte(b: Int) {
-        output.write(b)
-        output.flush()
+        output?.write(b)
+        output?.flush()
     }
 
     /** 窗口尺寸变化：通知内核 PTY 并同步本地 emulator */
     fun resize(cols: Int, rows: Int) {
-        ProotBridge.resizePty(fd.fd, cols, rows)
+        if (masterFdVal > 0) {
+            ProotBridge.resizePty(masterFdVal, cols, rows)
+        }
         emulator.resize(cols, rows)
     }
 
     fun close() {
-        runCatching { input.close() }
-        runCatching { output.close() }
-        runCatching { pfd.close() }
+        runCatching { input?.close() }
+        runCatching { output?.close() }
+        runCatching { pfd?.close() }
     }
 }

@@ -2,7 +2,10 @@ package com.proterm.app.terminal.gl
 
 import android.content.Context
 import android.opengl.GLSurfaceView
-import android.view.*
+import android.util.AttributeSet
+import android.view.KeyEvent
+import android.view.MotionEvent
+import android.view.inputmethod.BaseInputConnection
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
@@ -106,7 +109,7 @@ class GLTerminalView @JvmOverloads constructor(
             KeyEvent.KEYCODE_DPAD_RIGHT -> { escSeq('C'); return true }
             KeyEvent.KEYCODE_DPAD_LEFT -> { escSeq('D'); return true }
             KeyEvent.KEYCODE_HOME, KeyEvent.KEYCODE_MOVE_HOME -> { escSeq('H'); return true }
-            KeyEvent.KEYCODE_END, KeyEvent.KEYCODE_MOVE_END -> { escSeq('F'); return true }
+            KeyEvent.KEYCODE_MOVE_END -> { escSeq('F'); return true }
             KeyEvent.KEYCODE_PAGE_UP -> { s.write("\u001b[5~"); return true }
             KeyEvent.KEYCODE_PAGE_DOWN -> { s.write("\u001b[6~"); return true }
             else -> {
