@@ -157,7 +157,7 @@ class TerminalRenderer(
                 putQuad(bgData, c * cellW, y, (c + 1) * cellW, y + cellH, 0f, 0f, 1f, 1f, bg)
             }
         }
-        drawBuffer(bgData, 0, false)
+        drawBuffer(bgData, false)
 
         // ---- 字形层 ----
         // 静态图集（ASCII/DEC）走一次批绘；中文等动态字形逐张即时绘制（各自独立纹理）
@@ -189,7 +189,7 @@ class TerminalRenderer(
             }
         }
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, atlasId)
-        drawBuffer(glyphData, 0, true)
+        drawBuffer(glyphData, true)
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, 0)
         GLES20.glDisable(GLES20.GL_BLEND)
 
@@ -201,7 +201,7 @@ class TerminalRenderer(
                 val cx = em.cursorCol * cellW
                 val cy = em.cursorRow * cellH
                 putQuad(cursorData, cx, cy, cx + cellW, cy + cellH, 0f, 0f, 1f, 1f, cursorColor)
-                drawBuffer(cursorData, 0, false)
+                drawBuffer(cursorData, false)
             }
         }
     }
@@ -255,16 +255,16 @@ class TerminalRenderer(
         scratch.clear()
         putQuad(scratch, x0, y, x0 + w, y + cellH, g.u0, g.v0, g.u1, g.v1, fg)
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, g.texId)
-        drawBuffer(scratch, 0, true)
+        drawBuffer(scratch, true)
         if (underline) {
             val uy = y + cellH - 2f
             scratch.clear()
             putQuad(scratch, x0, uy, x0 + w, uy + 2f, 0f, 0f, 1f, 1f, fg)
-            drawBuffer(scratch, 0, true)
+            drawBuffer(scratch, true)
         }
     }
 
-    private fun drawBuffer(buf: FloatBuffer, quadOffset: Int, useTex: Boolean) {
+    private fun drawBuffer(buf: FloatBuffer, useTex: Boolean) {
         buf.position(0)
         val stride = 8 * 4
         GLES20.glVertexAttribPointer(aPos, 2, GLES20.GL_FLOAT, false, stride, 0)
