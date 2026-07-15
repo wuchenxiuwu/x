@@ -40,4 +40,8 @@
     <string name="permission_title">需要存储权限</string>
     <string name="permission_message">允许访问存储空间，以便导入容器文件</string>
     <string name="permission_denied">存储权限被拒绝，部分功能可能无法使用</string>
+
+    <!-- 导入/异常错误（ContainerActivity.kt 第 316 行引用） -->
+    <string name="import_error">导入失败: %s</string>
+
 </resources>
