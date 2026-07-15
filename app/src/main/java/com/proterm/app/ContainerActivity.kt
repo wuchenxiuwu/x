@@ -211,7 +211,6 @@ class ContainerActivity : AppCompatActivity() {
     private fun showEmptyState() {
         binding.containerRecycler.visibility = View.GONE
         binding.emptyState.visibility = View.VISIBLE
-        binding.importSection.visibility = View.GONE
     }
 
     // ── 创建容器弹窗 ───────────────────────────────────────
